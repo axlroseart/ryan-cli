@@ -1,0 +1,52 @@
+#vim
+*~
+*.sw?
+
+# python
+*.pyc
+
+# generic editing tools
+tags
+
+#mac
+*.DS_Store
+
+# libs
+
+# build tools
+node_modules/
+
+# logfiles
+*.log
+.idea/
+.vscode/
+.history/
+
+# build artifacts
+build/index.html
+build/favicon.*
+
+# config override
+config/local.json
+
+webpack/dll
+# build
+build/
+example/
+
+#tgz
+*.tgz
+src/test.tsx
+pack.sh
+stats.json
+
+#alilay
+.miniu/
+
+#umi
+src/.umi/*
+src/.umi
+
+#output
+es/
+lib/

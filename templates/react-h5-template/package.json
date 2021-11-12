@@ -1,0 +1,76 @@
+{
+  "name": "react-h5-project",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "prepare": "husky install",
+    "dev": "webpack serve --mode development --config ./config",
+    "build:site": "rimraf doc-site && dumi build",
+    "preview:site": "npm run build:site && serve doc-site",
+    "lint-fix": "eslint --ext .js,.tsx,.ts src --fix",
+    "build": "father-build",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "release": "npx standard-version --no-verify -t release-"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-loadable": "^5.5.6",
+    "@types/react-router-dom": "^5.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "@umijs/fabric": "^2.8.1",
+    "autoprefixer": "^10.4.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "copy-webpack-plugin": "^9.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.1",
+    "father-build": "^1.20.1",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.0",
+    "jest": "^27.3.1",
+    "lint-staged": "^11.2.6",
+    "postcss-less": "^5.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "prettier": "^2.4.1",
+    "serve": "^12.0.1",
+    "standard-version": "^9.3.2",
+    "stylelint": "^14.0.1",
+    "typescript": "^4.4.4"
+  },
+  "lint-staged": {
+    "*.{tsx,ts,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less}": [
+      "stylelint --customSyntax postcss-less --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-loadable": "^5.5.0"
+  }
+}
