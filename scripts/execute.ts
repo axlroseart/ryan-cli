@@ -17,15 +17,20 @@ export const execute = async() => {
       message: "your project's name:",
       default: 'a-ryan-cli-project',
       // TODO - check if target file name is available
-      // validate: ,
+      validate: function(val) {
+        const targetPath = resolveUserPath(val);
+        log.info(targetPath);
+        if (!fs.existsSync(targetPath)) {
+          return true;
+        }
+        return 'dir exists, plz type a new project name';
+      }
     },
   ])
 
   const { templateName, projectName } = answers;
 
   const templatePath = getTemplatesByName(templateName);
-
-  // fetch all target files which is under templatePath
 
   // ignore target list
   const ignoreFileList:string[] = [
@@ -36,16 +41,9 @@ export const execute = async() => {
   // copy files, from template to user
   const userPath = resolveUserPath(projectName)
   console.log('==> user path:', userPath);
+
   fs.mkdirSync(userPath, { recursive: true });
   copyFile(templatePath, userPath, ignoreFileList);
-  
-  // mkdir(userPath, { recursive: true }, (err) => {
-  //   if (err) {
-  //     log.error(err.message || 'unknow error');
-  //     return;
-  //   };
-  //   copyFile(templatePath, userPath, ignoreFileList);
-  // });
 
   log.success(`
   your project ${projectName} has been inited.
