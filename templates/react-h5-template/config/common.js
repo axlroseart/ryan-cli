@@ -69,8 +69,8 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      title: 'drx-main-server micro fe',
-      favicon: 'favicon.ico',
+      title: 'React H5 Project',
+      favicon: 'public/favicon.ico',
       template: `${src}/index.ejs`,
       filename: 'index.html', // output file
     }),
@@ -109,7 +109,6 @@ module.exports = {
               emitFile: true,
               limit: 3 * 1024,
               name: 'images/[name]__[hash:5].[ext]',
-              publicPath: publicSrc,
             },
           },
         ],
@@ -122,7 +121,6 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: 'assets/[name]__[hash:5].[ext]',
-              publicPath: publicSrc,
             },
           },
         ],
@@ -145,6 +143,7 @@ module.exports = {
     },
   },
   devServer: {
+    historyApiFallback: true,
     open: true,
     port: 8080,
   },

@@ -35,7 +35,8 @@ export const execute = async() => {
   // ignore target list
   const ignoreFileList:string[] = [
     '.git',
-    'node_modules'
+    'node_modules',
+    'package-lock.json'
   ]
   
   // copy files, from template to user
