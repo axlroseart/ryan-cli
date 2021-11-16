@@ -50,3 +50,4 @@ src/.umi
 #output
 es/
 lib/
+dist/
