@@ -1,8 +1,29 @@
 import inquirer from 'inquirer';
-import fs, { open, mkdir } from 'fs';
+import fs from 'fs';
 import { templatesData, getTemplatesByName, copyFile, resolveUserPath, log } from './utils';
 
 export const execute = async() => {
+
+  // const chooseRmExitsFilesOrNot = async(target:string) => {
+  //   const res = await inquirer.prompt([
+  //     {
+  //       type: 'confirm',
+  //       name: 'isRmExsitFile',
+  //       message: 'Remove existing files and continue?', 
+  //       default: true,
+  //     }
+  //   ])
+  //   const { isRmExsitFile } = res;
+  //   if (!isRmExsitFile) {
+  //     execute();
+  //     return 'repeat';
+  //   }
+  //   // todo - remove exits file
+  //   fs.rmdir(target, () => {
+  //     execute();
+  //     return true;
+  //   });
+  // }
   const answers = await inquirer.prompt([
     {
       type: 'list',
@@ -17,19 +38,18 @@ export const execute = async() => {
       message: "your project's name:",
       default: 'a-ryan-cli-project',
       // TODO - check if target file name is available
-      validate: function(val) {
+      validate: async function(val) {
         const targetPath = resolveUserPath(val);
-        log.info(targetPath);
         if (!fs.existsSync(targetPath)) {
           return true;
         }
-        // TODO - ask if remove exists files or not
-        return 'Target directory "vue-h5-template" is not empty. Remove existing files and continue?';
+        return 'Target directory "a-ryan-cli-project" is not empty';
       }
     },
   ])
 
-  const { templateName, projectName } = answers;
+  const { templateName, projectName, isRmExsitFile } = answers;
+  console.log('==> dsa:', isRmExsitFile);
 
   const templatePath = getTemplatesByName(templateName);
 
