@@ -23,7 +23,8 @@ export const execute = async() => {
         if (!fs.existsSync(targetPath)) {
           return true;
         }
-        return 'dir exists, plz type a new project name';
+        // TODO - ask if remove exists files or not
+        return 'Target directory "vue-h5-template" is not empty. Remove existing files and continue?';
       }
     },
   ])
