@@ -80,7 +80,8 @@ export const execute = async() => {
       '.git',
       'node_modules',
       'package-lock.json',
-      'yarn.lock'
+      'yarn.lock',
+      'yarn-error.log'
     ]
     // copy files, from template to user
     copyFile(templatePath, userPath, ignoreFileList);

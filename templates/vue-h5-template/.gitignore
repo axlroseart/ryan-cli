@@ -6,3 +6,4 @@ dist-ssr
 .vscode
 package-lock.json
 yarn.lock
+yarn-error.log

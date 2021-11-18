@@ -3,11 +3,13 @@ import { defineComponent } from 'vue';
 import logo from 'assets/images/logo.png';
 
 export const Index = defineComponent({
-  props: {
-    title: String,
+  setup() {
+    console.log('==> setup');
   },
-  setup(props) {
-    console.log(props);
+  data() {
+    return {
+      title: 'A Title Here.',
+    };
   },
   render() {
     const { title } = this;
