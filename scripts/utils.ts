@@ -46,7 +46,6 @@ export const getTemplatesByName = (name: string) => {
 
 export const copyFile = function (srcPath:string, tarPath:string, filter:string[] = []) {
   fs.readdir(srcPath, function (err, files) {
-    // console.log('==> files:', files);
     if (err === null) {
       files.forEach(function (filename) {
         let filedir = path.join(srcPath, filename);
@@ -56,12 +55,10 @@ export const copyFile = function (srcPath:string, tarPath:string, filter:string[
             let isFile = stats.isFile();
             if (isFile) {
               const destPath = path.join(tarPath, filename);
-              // console.log('==> it is a file, destPath:', destPath)
               // copy
               fs.copyFile(filedir, destPath, (err) => {});
             } else {
               let tarFiledir = path.join(tarPath, filename);
-              // console.log('==> not a file, tarFiledir:', tarFiledir);
               // create directory
               fs.mkdir(tarFiledir, (err) => {});
               // recursion
