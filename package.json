@@ -1,5 +1,5 @@
 {
-  "name": "ryan-cli",
+  "name": "@ryanx/ryan-cli",
   "version": "1.0.0",
   "description": "cli for ryan project group",
   "bin": {
