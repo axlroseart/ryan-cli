@@ -2,8 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
 const paths = require('./path');
 
 const { src, build, publicSrc } = paths;
@@ -15,24 +13,12 @@ const sassLoadConfig = [
     loader: 'postcss-loader',
     options: {
       postcssOptions: {
-        plugins: () => {
-          const plugin = [autoprefixer(), pxtorem({
-            rootValue: 100,
-            propList: [
-              '*',
-              '!min-width',
-              '!border',
-              '!border-left',
-              '!border-right',
-              '!border-top',
-              '!border-bottom',
-            ],
-            selectorBlackList: [
-              'no_rem',
-            ],
-          })];
-          return plugin;
-        },
+        plugins: [
+          require('autoprefixer'),
+          require('postcss-plugin-px2rem')({
+            rootValue: 32,
+          }),
+        ],
       },
     },
   },
@@ -86,8 +72,8 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: () => [
-                  autoprefixer(),
+                plugins: [
+                  require('autoprefixer'),
                 ],
               },
             },
@@ -144,7 +130,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    open: true,
+    open: false,
     port: 8080,
   },
 };

@@ -10,5 +10,22 @@
 <body>
   <div id="root">
   </div>
+  <script>
+    (function(doc, win) {
+      var resizeEvt =
+          "orientationchange" in window ? "orientationchange" : "resize",
+        setRemResponse = function() {
+          // 设计尺寸750
+          var vM = 750;
+          // 375px尺寸下，默认根节点字体大小为16px，因此在750的设计尺寸下要乘以2
+          var vfontSize = 32;
+          var html = doc.documentElement;
+          var newfontSize = vfontSize * ( html.clientWidth / vM);
+          html.style.fontSize = newfontSize + "px";
+        };
+      doc.addEventListener("DOMContentLoaded", setRemResponse, false);
+      win.addEventListener(resizeEvt, setRemResponse, false);
+    })(document, window);
+  </script>
   </body>
 </html>
