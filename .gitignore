@@ -1,6 +1,5 @@
 node_modules
 ryan-cli-test
-dist
 a-ryan-cli-project
 package-lock.json
 yarn.lock
