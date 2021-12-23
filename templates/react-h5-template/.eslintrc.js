@@ -18,14 +18,14 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     // 关闭eslint配置中与prettier冲突的格式化规则
-    'prettier',
+    'plugin:prettier/recommended',
   ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'import', 'prettier', '@typescript-eslint'],
+  plugins: ['import'],
   settings: {
     react: {
       createClass: 'createReactClass',
@@ -34,6 +34,8 @@ module.exports = {
     },
   },
   rules: {
+    // 是否开启prettier配置
+    'prettier/prettier': ['warn'],
     /**
      * eslint-react规则（包含tslint规则和react相关规则）
      * 注释中以‘CUSTOM’结尾的规则为可自定义规则（具体项目可自行调整）
@@ -152,7 +154,7 @@ module.exports = {
     '@typescript-eslint/no-this-alias': 1, // 禁止对this使用别名  --CUSTOM
     '@typescript-eslint/no-namespace': 1, // 禁止使用自定义TypeScript模块和名称空间  --CUSTOM
     '@typescript-eslint/no-unused-vars': [
-      2,
+      1,
       { vars: 'all', args: 'none', ignoreRestSiblings: true },
     ], // 提示未使用的变量  --CUSTOM
     'no-undef': 0, // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到 （原因：全局变量较常用，定义在global.d.ts中即可）

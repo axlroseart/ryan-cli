@@ -15,11 +15,9 @@ ReactDOM.render(
       <React.Suspense fallback={<Loading />}>
         <ErrorBoundary>
           <Routes>
-            {
-              routes.map((val, key) => <Route
-                {...val}
-                key={`route_${key}`}/>)
-            }
+            {routes.map((val, key) => (
+              <Route {...val} key={`route_${key}`} />
+            ))}
           </Routes>
         </ErrorBoundary>
       </React.Suspense>

@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import { Index } from './views/index';
 import { PageNotFound } from './views/404';
 
-const routes:RouteRecordRaw[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Index,

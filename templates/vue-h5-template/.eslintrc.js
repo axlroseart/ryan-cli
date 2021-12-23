@@ -1,3 +1,12 @@
+/**
+ *
+ * https://eslint.org/docs/user-guide/getting-started
+ * https://cn.eslint.org/docs/user-guide/getting-started
+ * 规则中第一个参数可以用字符串也可以用数字，例如： "eol-last": ["error", "always"]  或者  "eol-last": [2, "always"]
+ * "off" or 0 - 关闭规则
+ * "warn" or 1 - 将规则视为一个警告（不会影响退出码）
+ * "error" or 2 - 将规则视为一个错误 (退出码为1)
+ */
 module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -7,18 +16,20 @@ module.exports = {
     ecmaFeatures: {
       // Allows for the parsing of JSX
       jsx: true,
+      tsx: true,
     },
   },
   extends: [
+    'eslint:recommended',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
+    // 关闭eslint配置中与prettier冲突的格式化规则
+    'plugin:prettier/recommended',
   ],
-  plugins: [
-    'import',
-    '@typescript-eslint',
-  ],
+  plugins: ['import'],
   rules: {
+    // 是否开启prettier配置
+    'prettier/prettier': ['warn'],
     // ============命名=============
     camelcase: 'off',
     '@typescript-eslint/naming-convention': [
@@ -105,5 +116,16 @@ module.exports = {
     'prefer-const': 2, // 要求使用 const 声明那些声明后不再被修改的变量
     'one-var-declaration-per-line': 2, // 禁止一次性定义多个变量
     'key-spacing': [2, { afterColon: true }], // object的key的“:”之后至少有一个空格
+    'no-undef': 0, // 禁用未声明的变量，除非它们在 /*global */ 注释中被提到 （原因：全局变量较常用，定义在global.d.ts中即可）
   },
+  overrides: [
+    // 为.js文件设置覆盖规则
+    {
+      files: ['./**/*.js'],
+      excludedFiles: '*.spec.js',
+      rules: {
+        'no-var': 0,
+      },
+    },
+  ],
 };

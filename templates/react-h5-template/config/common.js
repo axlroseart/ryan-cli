@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const paths = require('./path');
@@ -42,18 +41,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: publicSrc,
-          to: 'assets',
-          globOptions: {
-            ignore: ['*.DS_Store'],
-          },
-          noErrorOnMissing: true,
-        },
-      ],
-    }),
     new HtmlWebpackPlugin({
       title: 'React H5 Project',
       favicon: 'public/favicon.ico',
